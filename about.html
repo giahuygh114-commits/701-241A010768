@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Phần lý thuyết</title><link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<header class="site-header"><div class="container header-inner"><a class="brand" href="index.html">WEB<span>LAB</span></a><button class="menu-toggle" id="menuToggle" aria-label="Mở menu" aria-expanded="false">☰</button><nav class="main-nav" id="mainNav"><a href="index.html">Trang chủ</a><a class="active" href="about.html">Lý thuyết</a><a href="https://baitap23vhu.netlify.app/" target="_blank" rel="noopener">Bài tập 23</a><a href="https://1drv.ms/w/c/9a8e10654d326ff8/IQBS3kAuiadES7S6GMZRklKCARi5FdW9-rYEEVv_yoiF1jo?e=IJwH1T" target="_blank" rel="noopener">Bài tập 22</a><a href="baitap01.html">Bài tập 1</a><a href="baitap02.html">Bài tập 2</a><a href="baitap03.html">Bài tập 3</a><a href="contact.html">Điểm danh</a></nav></div></header>
+<main class="container section article-page">
+  <p class="eyebrow">PHẦN 1 · 40 ĐIỂM</p><h1>Giải đáp câu hỏi lý thuyết</h1>
+  <article class="content-card">
+    <h2>Câu 1. So sánh position: relative và position: absolute</h2>
+    <p><code>position: relative</code> giữ phần tử trong luồng bố cục bình thường. Có thể dịch chuyển phần tử bằng <code>top</code>, <code>right</code>, <code>bottom</code> hoặc <code>left</code>, nhưng vị trí ban đầu vẫn được giữ chỗ.</p>
+    <p><code>position: absolute</code> đưa phần tử ra khỏi luồng bố cục bình thường nên các phần tử khác không giữ chỗ cho nó. Phần tử được định vị theo tổ tiên gần nhất có <code>position</code> khác <code>static</code>; nếu không có, nó thường định vị theo khối chứa ban đầu của trang.</p>
+    <div class="table-wrap"><table><thead><tr><th>Tiêu chí</th><th>relative</th><th>absolute</th></tr></thead><tbody><tr><td>Giữ chỗ trong layout</td><td>Có</td><td>Không</td></tr><tr><td>Phần tử tham chiếu</td><td>Vị trí ban đầu của chính nó</td><td>Tổ tiên được định vị gần nhất</td></tr><tr><td>Ví dụ sử dụng</td><td>Dịch nhẹ thành phần; làm mốc cho phần tử con</td><td>Badge trên ảnh, nút đóng góc hộp thoại</td></tr></tbody></table></div>
+    <p><strong>Ví dụ:</strong></p>
+    <pre><code>.product-card { position: relative; }
+.badge {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}</code></pre>
+    <p>Ở đây thẻ sản phẩm là mốc định vị; nhãn “Mới” nằm ở góc trên bên phải. Để responsive, nên kết hợp Flexbox/Grid, đơn vị linh hoạt như %, rem, minmax() và media queries thay vì cố định mọi kích thước bằng pixel. Khi deploy, trình duyệt trên thiết bị khác nhau có thể có chiều rộng và tỉ lệ màn hình khác nhau, vì vậy cần kiểm tra ở chế độ mobile/tablet/desktop và tránh phần tử absolute che nội dung.</p>
+  </article>
+  <article class="content-card">
+    <h2>Câu 2. Đăng ký domain, hosting, DNS và deploy</h2>
+    <ol>
+      <li>Chọn tên miền, kiểm tra tên còn khả dụng và đăng ký qua nhà đăng ký tên miền uy tín.</li>
+      <li>Chọn nơi lưu trữ website. Với website tĩnh dùng HTML/CSS/JavaScript, có thể dùng GitHub Pages hoặc Netlify mà không cần tự quản lý server.</li>
+      <li>Đưa mã nguồn lên nền tảng hosting, chọn nhánh/thư mục xuất bản hoặc kết nối repository Git.</li>
+      <li>Cấu hình domain tùy chỉnh trong trang quản trị hosting; sau đó cập nhật bản ghi DNS mà nền tảng yêu cầu, thường là CNAME hoặc A/AAAA.</li>
+      <li>Chờ DNS cập nhật, bật HTTPS nếu nền tảng hỗ trợ, rồi kiểm tra trang chủ, các liên kết, tài nguyên CSS/JS và biểu mẫu.</li>
+    </ol>
+    <p><strong>Vai trò DNS:</strong> DNS giúp chuyển tên miền dễ nhớ (ví dụ <code>example.com</code>) thành thông tin định tuyến cần thiết để trình duyệt tìm đến dịch vụ hosting. DNS không phải nơi lưu trữ mã nguồn website.</p>
+    <p><strong>Công cụ deploy:</strong> GitHub Pages phù hợp với website tĩnh lưu trong repository; Netlify hỗ trợ deploy từ Git hoặc tải thư mục website lên. Cả hai phù hợp cho bài tập không cần backend.</p>
+    <p><strong>Rủi ro bảo mật:</strong> cấu hình DNS sai có thể làm website không truy cập được hoặc trỏ đến dịch vụ không mong muốn; lộ token/API key trong mã nguồn công khai; dùng thư viện không an toàn; không bật HTTPS; lưu mật khẩu trong LocalStorage; hoặc dùng HTML không an toàn gây XSS. Không đưa mật khẩu, khóa bí mật hay dữ liệu cá nhân nhạy cảm vào repository công khai. Dùng HTTPS và chỉ lưu dữ liệu cần thiết.</p>
+  </article>
+  <article class="content-card">
+    <h2>Câu 3. So sánh let, const, var; scope và hoisting</h2>
+    <div class="table-wrap"><table><thead><tr><th>Từ khóa</th><th>Phạm vi</th><th>Khai báo lại</th><th>Gán lại</th></tr></thead><tbody><tr><td><code>var</code></td><td>Phạm vi hàm</td><td>Có thể</td><td>Có thể</td></tr><tr><td><code>let</code></td><td>Phạm vi khối</td><td>Không trong cùng scope</td><td>Có thể</td></tr><tr><td><code>const</code></td><td>Phạm vi khối</td><td>Không trong cùng scope</td><td>Không thể gán lại biến</td></tr></tbody></table></div>
+    <p><strong>Scope</strong> là phạm vi mà biến có thể được truy cập. <code>let</code> và <code>const</code> có block scope; <code>var</code> có function scope và có thể gây lỗi khi khai báo trong vòng lặp hoặc điều kiện.</p>
+    <p><strong>Hoisting:</strong> khai báo được xử lý trước khi mã chạy. Biến <code>var</code> được đưa lên đầu scope và khởi tạo giá trị <code>undefined</code>; <code>let</code>/<code>const</code> cũng được đăng ký nhưng không thể truy cập trước dòng khai báo do Temporal Dead Zone.</p>
+    <pre><code>console.log(a); // undefined
+var a = 10;
+
+// console.log(b); // ReferenceError
+let b = 20;</code></pre>
+    <p>Lỗi thường gặp là đọc biến <code>let</code> trước khi khai báo hoặc vô tình dùng <code>var</code> khiến biến thoát khỏi khối. Để debug, mở Chrome DevTools (F12), xem tab Console để đọc lỗi và dòng phát sinh; trong Sources đặt breakpoint, chạy từng bước (Step over/into), kiểm tra giá trị ở Scope/Watch. Nên ưu tiên <code>const</code> khi không cần gán lại và dùng <code>let</code> khi giá trị cần thay đổi.</p>
+  </article>
+  <article class="content-card">
+    <h2>Câu 4. Event Delegation</h2>
+    <p>Event Delegation là kỹ thuật gắn một trình xử lý sự kiện lên phần tử cha thay vì gắn riêng lên từng phần tử con. Khi sự kiện xảy ra trên phần tử con, sự kiện thường nổi bọt (bubbling) lên phần tử cha; ta dùng <code>event.target</code> hoặc <code>closest()</code> để xác định phần tử cần xử lý.</p>
+    <pre><code>document.querySelector("#productList").addEventListener("click", function (event) {
+  const button = event.target.closest(".add-button");
+  if (!button) return;
+  const item = button.closest(".product-card");
+  if (item) alert("Đã chọn: " + item.dataset.name);
+});</code></pre>
+    <p>Kỹ thuật này phù hợp với danh sách động vì các phần tử được thêm sau vẫn có thể được xử lý mà không cần gắn listener lại cho từng phần tử. Lợi ích gồm giảm số lượng event listener, đơn giản hóa quản lý sự kiện và có thể tiết kiệm tài nguyên khi danh sách lớn. Khi tích hợp HTML/CSS, nên dùng class/data attributes để xác định phần tử; kiểm tra đúng mục tiêu sự kiện và tránh thao tác nhầm với phần tử con bên trong nút.</p>
+  </article>
+</main>
+<footer class="site-footer"><div class="container footer-inner"><span>© 2026 · Website bài tập cá nhân</span><a href="index.html">Về trang chủ</a></div></footer><script src="js/script.js"></script>
+</body></html>
